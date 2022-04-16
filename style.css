@@ -56,6 +56,8 @@ body{
     margin-top: 80px;
     height:587px;
     width: 100%;
+   
+    
 }
 .baixo{
     position: fixed;
@@ -89,7 +91,7 @@ body{
     border-radius: 2px;
     margin: 4px 0px;
 }
-.normal{
+.message{
     background-color:
     #FFFFFF; 
 
@@ -99,7 +101,11 @@ body{
     background-color: 
     #DCDCDC;
 }
-.private{
+.private_message{
     background-color: 
     #FFDEDE;
+}
+span{
+    padding: 5px;
+    font-size: 14px;
 }
