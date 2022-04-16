@@ -16,6 +16,9 @@ body{
 
 
 }
+.icone , .botao :hover{
+    cursor: pointer;
+}
 
 
 
@@ -47,6 +50,8 @@ body{
             height:31px;
         }
 .conteudo{
+    
+    align-items: center;
     background-color: #E5E5E5;
     margin-top: 80px;
     height:587px;
@@ -78,4 +83,23 @@ body{
 
 .escondido{
     display: none;
+}
+.message{
+   width: 100%;
+    border-radius: 2px;
+    margin: 4px 0px;
+}
+.normal{
+    background-color:
+    #FFFFFF; 
+
+}
+.status{
+   
+    background-color: 
+    #DCDCDC;
+}
+.private{
+    background-color: 
+    #FFDEDE;
 }

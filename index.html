@@ -14,7 +14,7 @@
     <div class="entrar">
       
         <div class="imagem"><img src="img/logo 1.png" ></div>
-        <div class="usuario">  <input class="usuario-input" type="text"></div>
+        <div class="usuario">  <input class="usuario-input" type="text" required></div>
         <div class="botao"onclick=" entrar()"> <button>Entrar</button></div>  
  
     </div>
@@ -24,10 +24,15 @@
         <img  class="img2"src="img/Vector.png">
        
     </div>
-    <div class="conteudo"></div>
+    <div class="conteudo"> 
+        
+        <div class="message status">oiiii</div>
+        <div class="message private">oiii</div>
+        <div class="message normal">oi</div>
+    </div>
     <div class="baixo"> 
-       <input class= "texto" type="text" value="Escreva aqui...">
-       <ion-icon class="icone" name="paper-plane-outline"></ion-icon>
+       <input class= "texto" type="text" value="Escreva aqui..." required>
+       <ion-icon class="icone" onclick="enviarMensagem()" name="paper-plane-outline"></ion-icon>
     </div>
 </div>
 
