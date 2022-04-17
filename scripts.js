@@ -1,19 +1,10 @@
 /*PROBLEMAS
--Manter conexao 
--Scroll horizontal
-
+-Limpar o campo input ao enviar a mensagem
+-Manter a rolagem das mensagens atualizada
 */
 
-
-document.addEventListener("keypress", function(e){
-    if(e.key==="Enter"){
-      
-       const btn=document.querySelector(".icone")
-       btn.click();
-      
-    }
-})
 //Entrar na sala
+
 function entrar(){
     const usuario = document.querySelector(".usuario-input").value
     const pessoa={name:usuario}
@@ -21,8 +12,8 @@ function entrar(){
     console.log(promise)
     promise.then(entrarSucesso)
     promise.catch(entrarErro)    
+    setInterval(manterConexao,5000)
 }
-
         function entrarSucesso(response){
             const usuario = document.querySelector(".usuario-input").value
             if(usuario!==response.data){
@@ -40,10 +31,44 @@ function entrar(){
             if(error.response.status ==400){
                 const statusCode=error.response.status
                 console.log(statusCode)
-                alert("Usuario ja cadastrado. Tente outro nome!")             
+                alert("Usuario ja cadastrado. Tente outro nome!")     
+                    
+            }else{
+                entrar()
             }
+
             
         }
+        document.addEventListener("keypress", function(e){
+            if(e.key==="Enter"){
+          
+               const btn=document.querySelector(".icone")
+               btn.click();
+              
+            }
+        })
+//Manter conexao
+function manterConexao(){   
+    const usuario = document.querySelector(".usuario-input").value
+    const pessoa={name:usuario}
+    const promise =axios.post('https://mock-api.driven.com.br/api/v6/uol/status',pessoa);
+    promise.then(manterConexaoSucesso)
+    promise.catch(manterConexaoErro)    
+}     
+        function manterConexaoSucesso(response){
+        
+
+        }
+        function manterConexaoErro(error){
+        
+            if(error.response.status ==400){
+                const statusCode=error.response.status
+                alert("oops...Deu ruim")     
+            }
+            alert("deu ruim")
+        } 
+
+
 //Carregar mensagens 
 function carregarMsg(){
     let promise=axios.get('https://mock-api.driven.com.br/api/v6/uol/messages')
@@ -69,13 +94,18 @@ function carregarMsg(){
             </span>
         </div>
             `
-            }   
+            }  
+          
         }
 
-        function carregarErro(){
+        function carregarErro(error){
+            if(error.response.status ==400){
+                const statusCode=error.response.status
+                alert("oops...Deu ruim")     
+            }
             alert("deu ruim")
         }
-setInterval(carregarMsg(),4000)
+
 //Enviar mensagem
 function enviarMensagem(){
     const texto= document.querySelector(".texto").value
@@ -92,19 +122,17 @@ function enviarMensagem(){
    
    
 }
-function enviarMensagemSucesso(){
-    alert("enviei")
-    carregarMsg()
+        function enviarMensagemSucesso(){
+            carregarMsg()
+           
 
-}
-function enviarMensagemErro(error){
-    if(error.response.status ==400){
-        const statusCode=error.response.status
-        alert("oops...Deu ruim")     
-    }
-
- 
-}
+        }
+        function enviarMensagemErro(error){
+            if(error.response.status ==400){
+                const statusCode=error.response.status
+                alert("oops...Deu ruim")     
+            }
+        }
 
 
 
