@@ -12,6 +12,9 @@ body{
     margin: 50px;
     
 }
+.carregando{
+    position: absolute;
+}
 .entrar img{
     height: 92px;
     width: 130px;
@@ -109,9 +112,7 @@ button{
 
         }
 
-.escondido{
-    display: none;
-}
+
 .msg{
     display: flex;
     align-items: center;

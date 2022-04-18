@@ -1,8 +1,16 @@
-/*PROBLEMAS
+/*
+PROBLEMAS
 -Limpar o campo input ao enviar a mensagem
 -Manter a rolagem das mensagens atualizada
+-Carregar as mensagens a cada 3
+-Fazer a imagem carregando aparecer
 */
 
+
+//Imagem carregando
+//function carregando(){
+  //  document.querySelector(".carregando").classList.remove("escondido") 
+//}
 //Entrar na sala
 
 function entrar(){
@@ -17,7 +25,7 @@ function entrar(){
         function entrarSucesso(response){
             const usuario = document.querySelector(".usuario-input").value
             if(usuario!==response.data){
-                document.querySelector(".entrar").classList.add("escondido")
+                document.querySelector(".entrar").classList.add("escondido")            
                 document.querySelector(".entrei").classList.remove("escondido")     
                 carregarMsg()     
                
@@ -28,13 +36,13 @@ function entrar(){
    
         }
         function entrarErro(error){
+            cont=0
             if(error.response.status ==400){
                 const statusCode=error.response.status
                 console.log(statusCode)
-                alert("Usuario ja cadastrado. Tente outro nome!")     
-                    
-            }else{
-                entrar()
+                alert("Usuario ja cadastrado. Tente outro nome!") 
+                cont++             
+                    entrar()
             }
 
             
@@ -85,6 +93,7 @@ function carregarMsg(){
                 const time=response.data[i].time
                 const text=response.data[i].text
                 let conteudo=document.querySelector(".conteudo")
+                conteudo.scrollIntoView(false)
                 console.log(conteudo.innerHTML)
             conteudo.innerHTML+=` <div class="msg ${type}">
             <span class="time">${time}</span>
